@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-cynbit-darker text-white;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-cynbit-dark;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-cynbit-border rounded-full;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-cynbit-teal hover:bg-cynbit-tealDark text-white font-semibold px-5 py-2.5 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cynbit-accent focus:ring-offset-2 focus:ring-offset-cynbit-dark disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply border border-cynbit-border hover:border-cynbit-teal text-cynbit-muted hover:text-white px-5 py-2.5 rounded-xl transition-all duration-200;
+  }
+  .chat-bubble-bot {
+    @apply bg-cynbit-card border border-cynbit-border text-white rounded-2xl rounded-tl-sm px-4 py-3 max-w-[82%] text-sm leading-relaxed;
+  }
+  .chat-bubble-user {
+    @apply bg-cynbit-teal text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[82%] text-sm leading-relaxed ml-auto;
+  }
+  .chip {
+    @apply border border-cynbit-teal text-cynbit-accent hover:bg-cynbit-teal hover:text-white cursor-pointer rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-150 select-none;
+  }
+  .chip-selected {
+    @apply bg-cynbit-teal text-white border-cynbit-teal;
+  }
+  .input-field {
+    @apply w-full bg-cynbit-dark border border-cynbit-border text-white placeholder-cynbit-muted rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cynbit-teal focus:ring-1 focus:ring-cynbit-teal transition-colors;
+  }
+}
+
