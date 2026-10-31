@@ -1,43 +1,59 @@
-# Cynbit Website Improvement — Interactive Lead Inquiry Assistant
+# Cynbit Website Improvement — Interactive Lead Experience & Reviewer Console
 
 **Candidate:** Priyanshu Shekhar  
 **Role:** Full Stack Developer Intern Assessment  
-**Task:** Identify an improvement on Cynbit's website and build a working prototype  
+**Task:** Identify a meaningful improvement on Cynbit's website and implement a working prototype  
+**Live URL:** [https://cynbit-website-improvement-rust.vercel.app/](https://cynbit-website-improvement-rust.vercel.app/)  
+**Repository:** [https://github.com/priyanshu2104/cynbit-website-improvement](https://github.com/priyanshu2104/cynbit-website-improvement)  
 
 ---
 
 ## The Idea & Motivation
 
-While browsing through Cynbit's website ([cynbit.in](https://cynbit.in)), I noticed that Cynbit focuses heavily on AI automation, autonomous systems, and modern digital development. However, the primary point of contact is a traditional, static form. 
+While analyzing Cynbit Technologies' website ([cynbit.in](https://cynbit.in)), I evaluated the experience from both user engagement and technical conversion standpoints. Cynbit specializes in autonomous AI agents, enterprise software development, cloud systems, and specialized tools (like Revio and BitElevate). 
 
-For a company helping clients build intelligent automated workflows, having a static contact form felt like a missed opportunity:
-1. **Friction:** Visitors often aren't sure whether they need custom full-stack development, an AI agent, cloud architecture, or Revio.
-2. **Engagement:** Static forms have high drop-off rates on mobile and desktop.
-3. **Qualification:** Leads submitted through standard forms often lack project scope, timeline, and budget context, requiring back-and-forth emails.
+However, the primary point of contact on the website is a traditional static form. For an engineering company emphasizing autonomous agents and high-performance digital automation, relying solely on a plain form has significant drawbacks:
+1. **Friction & Ambiguity:** Visitors often don't know whether their requirement fits under Autonomous AI Agents, Full-Stack Development, or Revio.
+2. **Mobile Typing Fatigue:** Long multi-field forms on mobile devices have high abandonment rates.
+3. **Lack of Immediate Qualification:** Static submissions often miss budget or timeline context, forcing manual back-and-forth discovery calls.
 
-To solve this, I designed and built **Aria**, an interactive project inquiry chatbot widget embedded right into the site. It guides prospective clients through a smooth, conversational flow, categorizes their requirements, collects their timeline and budget via quick-select options, and submits a structured lead.
-
----
-
-## Key Features
-
-- **Interactive Conversational Flow:** 7-step guided questionnaire that feels personal and responsive.
-- **Quick-select Pills:** Instead of making users type everything on mobile, options for services, budgets, and timelines can be tapped with one click.
-- **Pre-submission Review Card:** Displays a live summary of all selections before final submission so the user can verify their details.
-- **Instant Validation:** Client-side validation for name, email format, and description length, paired with server-side Zod schema validation.
-- **API Backend:** `/api/leads` route handling JSON payloads, validation, error handling, and structured response codes.
-- **Responsive Cynbit Theme:** Styled with custom dark mode and teal accents matching Cynbit's brand identity.
+To solve this, I built **Aria**, an interactive conversational project inquiry assistant, integrated seamlessly into a replica of Cynbit's official design system, coupled with a **Live Reviewer Console** to inspect ingested leads in real-time.
 
 ---
 
-## Tech Stack Used
+## Core Capabilities & Implemented Features
+
+### 1. Interactive Conversational Assistant (Aria)
+- **Guided Dialogue:** Multi-step intake flow covering name, service selection, project scope, budget bracket, timeline, and work email.
+- **Quick-Select Pills:** One-tap chips for services, budgets, and timelines, minimizing mobile typing friction.
+- **Live Summary & Review Card:** Displays a structured overview of all user selections prior to final confirmation.
+- **Enterprise Tracking ID & Clipboard Copy:** Automatically assigns an inquiry reference number (e.g. `#CYN-849201`) with a one-click copy confirmation button on the success screen.
+
+### 2. Live Reviewer Lead Inspector Drawer
+- **Real-Time Data Feed:** Accessible via the bottom-left floating badge (*Reviewer Lead Console*).
+- **Instant Synchronization:** Connects directly to the `GET /api/leads` endpoint and auto-refreshes via custom events whenever an inquiry is submitted in the chatbot.
+- **Evaluator-Friendly:** Allows reviewers to test submitting an inquiry in the chat and instantly inspect the stored record with timestamp, UUID, and categorization.
+
+### 3. Service Card Deep-Linking
+- On the **Domain Mastery** and **Foundational Pillars** sections, clicking *"Discuss Requirements →"* opens the assistant and dynamically passes relevant service context.
+
+### 4. Official Cynbit Design Language
+- Faithfully mirrors Cynbit's Material 3 design system:
+  - Colors: Primary Cynbit Teal (`#006067`), Primary Container (`#007b83`), Light Surface (`#f7fafa`), and Amber accents (`#ffddb3`).
+  - Assets: Official vector `logo.svg` and `favicon.svg`.
+  - Components: Glassmorphic top navigation (`glass-nav`), Cynbit AI orbital graphic with animated dashed rings, Foundational Pillars, Domain Mastery, Footer, and Mobile Bottom Navigation Bar.
+
+---
+
+## Tech Stack
 
 - **Framework:** Next.js 14 (App Router)
 - **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **Transitions / Animation:** Framer Motion
+- **Styling:** Tailwind CSS (Custom Cynbit Design Tokens)
+- **Transitions / Physics:** Framer Motion
 - **Schema Validation:** Zod
 - **Icons:** Lucide React
+- **Deployment:** Vercel (Edge Network)
 
 ---
 
@@ -46,24 +62,33 @@ To solve this, I designed and built **Aria**, an interactive project inquiry cha
 ```text
 cynbit-chatbot/
 ├── app/
-│   ├── api/leads/route.ts       # POST endpoint for lead validation & intake
-│   ├── globals.css              # Custom styling & utility classes
-│   ├── layout.tsx               # Root layout
-│   └── page.tsx                 # Landing page embedding the widget
+│   ├── api/leads/route.ts          # POST (Zod validation) & GET (lead list)
+│   ├── globals.css                 # Cynbit glass-nav, theme tokens, & custom utilities
+│   ├── layout.tsx                  # Root layout with metadata and favicon
+│   └── page.tsx                    # Landing page embedding all sections & widgets
 ├── components/
-│   ├── HeroSection.tsx          # Main header section
-│   ├── ServicesSection.tsx      # Cynbit services showcase
-│   ├── StatsSection.tsx         # Key highlights
+│   ├── Navbar.tsx                  # Glassmorphic top navigation bar
+│   ├── HeroSection.tsx             # Cynbit hero with animated orbital AI graphic
+│   ├── TickerSection.tsx           # Quick service highlights bar
+│   ├── PillarsSection.tsx          # Foundational pillars (Infrastructure, SaaS, Impact)
+│   ├── ServicesSection.tsx         # Domain mastery cards with scoping triggers
+│   ├── Footer.tsx                  # Official footer with Jaipur office info & contact
+│   ├── BottomNav.tsx               # Mobile persistent bottom navigation bar
+│   ├── LeadInspectorDrawer.tsx     # Reviewer slide-over console for live API records
 │   └── chatbot/
-│       ├── ChatbotWidget.tsx    # Floating widget container & trigger
-│       ├── ChatWindow.tsx       # Conversation engine and step coordinator
-│       ├── ReviewCard.tsx       # Summary card component
-│       ├── SuccessCard.tsx      # Submission confirmation view
-│       └── TypingIndicator.tsx  # Dynamic loading animation
+│       ├── ChatbotWidget.tsx       # Floating launcher with hint bubble & external trigger
+│       ├── ChatWindow.tsx          # State-machine conversation engine
+│       ├── ReviewCard.tsx          # Pre-submission confirmation summary
+│       ├── SuccessCard.tsx         # Reference ID generation & clipboard copy
+│       └── TypingIndicator.tsx     # Dynamic loading animation
 ├── lib/
-│   ├── chatScript.ts            # Conversation responses per state
-│   └── chatTypes.ts             # TypeScript definitions and option lists
-└── TECHNICAL_REPORT.md          # In-depth architectural & evaluation report
+│   ├── chatScript.ts               # Dialog responses per conversational step
+│   └── chatTypes.ts                # TypeScript types, step enum, and option sets
+├── public/
+│   ├── favicon.svg                 # Cynbit favicon
+│   └── logo.svg                    # Official Cynbit logo
+├── TECHNICAL_REPORT.md             # In-depth architectural & evaluation report
+└── vercel.json                     # Production deployment configuration
 ```
 
 ---
@@ -72,8 +97,8 @@ cynbit-chatbot/
 
 1. Clone the repository:
    ```bash
-   git clone <repo-url>
-   cd cynbit-chatbot
+   git clone https://github.com/priyanshu2104/cynbit-website-improvement.git
+   cd cynbit-website-improvement
    ```
 
 2. Install dependencies:
@@ -86,16 +111,17 @@ cynbit-chatbot/
    npm run dev
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser. The chatbot launcher will appear in the bottom-right corner.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## Testing the API
+## API Documentation
 
-You can test the lead intake endpoint directly via curl:
+### `POST /api/leads`
+Submits and validates a project inquiry payload.
 
 ```bash
-curl -X POST http://localhost:3000/api/leads \
+curl -X POST https://cynbit-website-improvement-rust.vercel.app/api/leads \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Alex Miller",
@@ -105,4 +131,20 @@ curl -X POST http://localhost:3000/api/leads \
     "budget": "5l-20l",
     "timeline": "1-month"
   }'
+```
+
+**Response (201 Created):**
+```json
+{
+  "success": true,
+  "message": "Got it! We'll be in touch soon.",
+  "id": "e4c7980f-96eb-4dc4-839e-d4c457317789"
+}
+```
+
+### `GET /api/leads`
+Fetches all stored inquiries (used by the Reviewer Lead Console).
+
+```bash
+curl https://cynbit-website-improvement-rust.vercel.app/api/leads
 ```
