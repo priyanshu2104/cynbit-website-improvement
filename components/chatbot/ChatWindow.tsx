@@ -129,6 +129,7 @@ export default function ChatWindow() {
       setTyping(false)
 
       if (data.success) {
+        window.dispatchEvent(new CustomEvent('cynbit-lead-submitted', { detail: data }))
         sendBotMessage('success', formData, 200)
       } else {
         sendBotMessage('error', formData, 200)

@@ -8,6 +8,7 @@ import PillarsSection from '@/components/PillarsSection'
 import ServicesSection from '@/components/ServicesSection'
 import Footer from '@/components/Footer'
 import BottomNav from '@/components/BottomNav'
+import LeadInspectorDrawer from '@/components/LeadInspectorDrawer'
 
 const ChatbotWidget = dynamic(() => import('@/components/chatbot/ChatbotWidget'), {
   ssr: false,
@@ -26,6 +27,7 @@ export default function Home() {
       <Footer />
       <BottomNav />
       <ChatbotWidget />
+      <LeadInspectorDrawer />
     </div>
   )
 }

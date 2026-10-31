@@ -5,6 +5,7 @@ import { Bot, Code2, Cloud, TrendingUp, Sparkles } from 'lucide-react'
 
 const domainServices = [
   {
+    id: 'ai-agents',
     icon: Bot,
     tag: 'Core Specialization',
     title: 'Autonomous AI Agents',
@@ -12,6 +13,7 @@ const domainServices = [
       'Goal-driven autonomous agents capable of multi-platform orchestration, self-correction, reasoning, and context retention beyond basic chatbot scripts.',
   },
   {
+    id: 'fullstack',
     icon: Code2,
     tag: 'Web & Mobile',
     title: 'Software Engineering',
@@ -19,6 +21,7 @@ const domainServices = [
       'Robust, responsive, and secure digital platforms engineered with modern stacks like Next.js, Node, TypeScript, and distributed cloud microservices.',
   },
   {
+    id: 'cloud',
     icon: Cloud,
     tag: 'Cloud Infrastructure',
     title: 'Cloud & DevOps Systems',
@@ -26,6 +29,7 @@ const domainServices = [
       'Resilient serverless and containerized deployments across AWS, Google Cloud, and Azure configured for high concurrency and zero-downtime scalability.',
   },
   {
+    id: 'seo',
     icon: TrendingUp,
     tag: 'Growth Systems',
     title: 'Technical SEO & Marketing',
@@ -35,8 +39,8 @@ const domainServices = [
 ]
 
 export default function ServicesSection() {
-  function handleOpenChat() {
-    window.dispatchEvent(new CustomEvent('cynbit-open-chat'))
+  function handleOpenChat(serviceId?: string) {
+    window.dispatchEvent(new CustomEvent('cynbit-open-chat', { detail: { serviceId } }))
   }
 
   return (
@@ -89,7 +93,7 @@ export default function ServicesSection() {
                 <div className="pt-6 mt-6 border-t border-outline-variant/10 flex items-center justify-between">
                   <span className="text-xs font-bold text-on-surface-variant">Scope Project</span>
                   <button
-                    onClick={handleOpenChat}
+                    onClick={() => handleOpenChat(service.id)}
                     className="text-xs font-bold text-primary hover:underline flex items-center gap-1"
                   >
                     Discuss Requirements →
@@ -115,7 +119,7 @@ export default function ServicesSection() {
             </p>
           </div>
           <button
-            onClick={handleOpenChat}
+            onClick={() => handleOpenChat()}
             className="btn-primary text-xs uppercase font-bold tracking-wider px-8 py-3.5 whitespace-nowrap shadow-md"
           >
             Launch Assistant
