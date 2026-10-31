@@ -3,36 +3,38 @@
 import { SERVICES, BUDGETS, TIMELINES, type LeadFormData } from '@/lib/chatTypes'
 
 function getLabel(list: { id: string; label: string }[], id: string) {
-  return list.find(item => item.id === id)?.label ?? id
+  return list.find((item) => item.id === id)?.label ?? id
 }
 
 export default function ReviewCard({ data }: { data: LeadFormData }) {
   return (
-    <div className="bg-cynbit-card border border-cynbit-border rounded-xl p-3 text-xs space-y-2">
-      <p className="text-cynbit-muted uppercase tracking-wide text-[10px] font-semibold">Summary</p>
+    <div className="bg-surface-container rounded-2xl p-3.5 text-xs space-y-2 border border-outline-variant/25">
+      <p className="text-primary uppercase tracking-wider text-[10px] font-bold">
+        Inquiry Summary
+      </p>
       <div className="flex gap-2">
-        <span className="text-cynbit-muted w-14 shrink-0">Name</span>
-        <span className="text-white">{data.name}</span>
+        <span className="text-on-surface-variant w-16 shrink-0 font-medium">Name:</span>
+        <span className="text-on-surface font-semibold">{data.name}</span>
       </div>
       <div className="flex gap-2">
-        <span className="text-cynbit-muted w-14 shrink-0">Service</span>
-        <span className="text-white">{getLabel(SERVICES, data.service)}</span>
+        <span className="text-on-surface-variant w-16 shrink-0 font-medium">Interest:</span>
+        <span className="text-on-surface font-semibold">{getLabel(SERVICES, data.service)}</span>
       </div>
       <div className="flex gap-2">
-        <span className="text-cynbit-muted w-14 shrink-0">Project</span>
-        <span className="text-white flex-1 break-words">{data.projectDescription}</span>
+        <span className="text-on-surface-variant w-16 shrink-0 font-medium">Overview:</span>
+        <span className="text-on-surface flex-1 break-words font-medium">{data.projectDescription}</span>
       </div>
       <div className="flex gap-2">
-        <span className="text-cynbit-muted w-14 shrink-0">Budget</span>
-        <span className="text-white">{getLabel(BUDGETS, data.budget)}</span>
+        <span className="text-on-surface-variant w-16 shrink-0 font-medium">Budget:</span>
+        <span className="text-on-surface font-semibold">{getLabel(BUDGETS, data.budget)}</span>
       </div>
       <div className="flex gap-2">
-        <span className="text-cynbit-muted w-14 shrink-0">Timeline</span>
-        <span className="text-white">{getLabel(TIMELINES, data.timeline)}</span>
+        <span className="text-on-surface-variant w-16 shrink-0 font-medium">Timeline:</span>
+        <span className="text-on-surface font-semibold">{getLabel(TIMELINES, data.timeline)}</span>
       </div>
       <div className="flex gap-2">
-        <span className="text-cynbit-muted w-14 shrink-0">Email</span>
-        <span className="text-white">{data.email}</span>
+        <span className="text-on-surface-variant w-16 shrink-0 font-medium">Email:</span>
+        <span className="text-primary font-semibold">{data.email}</span>
       </div>
     </div>
   )

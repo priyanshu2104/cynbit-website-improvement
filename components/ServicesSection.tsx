@@ -1,113 +1,127 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Bot, Code2, Cloud, TrendingUp, Star, GraduationCap } from 'lucide-react'
+import { Bot, Code2, Cloud, TrendingUp, Sparkles } from 'lucide-react'
 
-// all the services cynbit offers
-const services = [
+const domainServices = [
   {
     icon: Bot,
-    title: 'AI Automation & Agents',
-    desc: 'Goal-driven AI agents that handle complex workflows across platforms — not just chatbots.',
-    tag: '🔥 Popular',
+    tag: 'Core Specialization',
+    title: 'Autonomous AI Agents',
+    description:
+      'Goal-driven autonomous agents capable of multi-platform orchestration, self-correction, reasoning, and context retention beyond basic chatbot scripts.',
   },
   {
     icon: Code2,
-    title: 'Full-Stack Development',
-    desc: 'End-to-end web and mobile apps built with modern stacks and designed to scale.',
-    tag: null,
+    tag: 'Web & Mobile',
+    title: 'Software Engineering',
+    description:
+      'Robust, responsive, and secure digital platforms engineered with modern stacks like Next.js, Node, TypeScript, and distributed cloud microservices.',
   },
   {
     icon: Cloud,
-    title: 'Cloud Architecture',
-    desc: 'Scalable infrastructure on AWS, Azure, and GCP built for reliability and cost efficiency.',
-    tag: null,
+    tag: 'Cloud Infrastructure',
+    title: 'Cloud & DevOps Systems',
+    description:
+      'Resilient serverless and containerized deployments across AWS, Google Cloud, and Azure configured for high concurrency and zero-downtime scalability.',
   },
   {
     icon: TrendingUp,
-    title: 'Technical SEO & Growth',
-    desc: 'Data-driven SEO strategies that compound over time and drive consistent organic traffic.',
-    tag: null,
-  },
-  {
-    icon: Star,
-    title: 'Revio',
-    desc: 'AI-powered review management for multi-location businesses — with crisis detection and role-based access.',
-    tag: '🆕 Product',
-  },
-  {
-    icon: GraduationCap,
-    title: 'BitElevate',
-    desc: 'Developer upskilling platform with adaptive learning paths and real-time skill gap analysis.',
-    tag: '🎓 EdTech',
+    tag: 'Growth Systems',
+    title: 'Technical SEO & Marketing',
+    description:
+      'Structured technical SEO frameworks, Core Web Vitals optimization, and conversion-centered design that convert search visibility into enterprise revenue.',
   },
 ]
 
 export default function ServicesSection() {
+  function handleOpenChat() {
+    window.dispatchEvent(new CustomEvent('cynbit-open-chat'))
+  }
+
   return (
-    <section className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-14"
-        >
-          <p className="text-cynbit-accent text-sm font-semibold uppercase tracking-widest mb-3">What We Build</p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Services That{' '}
-            <span className="bg-gradient-to-r from-cynbit-teal to-cynbit-accent bg-clip-text text-transparent">Scale</span>
-          </h2>
-          <p className="text-cynbit-muted max-w-xl mx-auto text-base">
-            From AI agents to full-stack platforms — we build things that actually work in production.
+    <section className="py-24 px-4 md:px-8 lg:px-12 bg-white" id="services">
+      <div className="max-w-screen-2xl mx-auto">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <p className="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-2">
+              The Speed of a Startup. The Rigor of an Enterprise.
+            </p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-on-surface">
+              Domain Mastery.
+            </h2>
+          </div>
+          <p className="text-sm text-on-surface-variant max-w-md font-medium leading-relaxed">
+            We operate at the convergence of autonomous AI engineering, enterprise-grade architecture, and high-velocity digital delivery.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((s, i) => {
-            const Icon = s.icon
+        {/* 4 Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {domainServices.map((service, idx) => {
+            const Icon = service.icon
             return (
               <motion.div
-                key={s.title}
-                initial={{ opacity: 0, y: 20 }}
+                key={service.title}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.07 }}
-                whileHover={{ y: -4 }}
-                className="group bg-cynbit-card border border-cynbit-border hover:border-cynbit-teal/50 rounded-2xl p-6 transition-all duration-300"
+                transition={{ delay: idx * 0.08 }}
+                className="bg-surface rounded-3xl p-8 md:p-10 border border-outline-variant/15 hover:border-primary/40 transition-all duration-300 hover:shadow-lg flex flex-col justify-between group"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-11 h-11 bg-cynbit-teal/10 group-hover:bg-cynbit-teal/20 rounded-xl flex items-center justify-center transition-colors">
-                    <Icon className="text-cynbit-accent" size={21} />
-                  </div>
-                  {s.tag && (
-                    <span className="text-[10px] font-semibold bg-cynbit-teal/10 text-cynbit-accent border border-cynbit-teal/30 rounded-full px-2.5 py-1">
-                      {s.tag}
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-12 h-12 rounded-2xl bg-white shadow-sm border border-outline-variant/15 text-primary flex items-center justify-center group-hover:scale-105 transition-transform">
+                      <Icon size={24} />
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white text-primary border border-primary/20">
+                      {service.tag}
                     </span>
-                  )}
+                  </div>
+                  <h3 className="text-2xl font-bold text-on-surface mb-3">{service.title}</h3>
+                  <p className="text-sm text-on-surface-variant leading-relaxed font-medium">
+                    {service.description}
+                  </p>
                 </div>
-                <h3 className="text-white font-semibold text-base mb-2">{s.title}</h3>
-                <p className="text-cynbit-muted text-sm leading-relaxed">{s.desc}</p>
+
+                <div className="pt-6 mt-6 border-t border-outline-variant/10 flex items-center justify-between">
+                  <span className="text-xs font-bold text-on-surface-variant">Scope Project</span>
+                  <button
+                    onClick={handleOpenChat}
+                    className="text-xs font-bold text-primary hover:underline flex items-center gap-1"
+                  >
+                    Discuss Requirements →
+                  </button>
+                </div>
               </motion.div>
             )
           })}
         </div>
 
-        {/* bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="mt-14 bg-cynbit-teal/10 border border-cynbit-teal/20 rounded-2xl p-8 text-center"
-        >
-          <h3 className="text-2xl font-bold mb-2">Not sure which one you need?</h3>
-          <p className="text-cynbit-muted mb-4">
-            Use the chat widget — Aria will help you figure it out in about 2 minutes.
-          </p>
-          <p className="text-cynbit-accent text-sm font-medium">👉 Bottom-right corner</p>
-        </motion.div>
+        {/* Interactive CTA Banner */}
+        <div className="mt-16 bg-gradient-to-r from-primary/10 via-primary-container/10 to-secondary/10 rounded-3xl p-8 md:p-12 border border-primary/20 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center md:text-left">
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-wider">
+              <Sparkles size={14} />
+              Interactive Lead Qualification
+            </div>
+            <h3 className="text-2xl md:text-3xl font-black text-on-surface">
+              Need a project estimate or solution breakdown?
+            </h3>
+            <p className="text-sm text-on-surface-variant max-w-xl font-medium">
+              Try **Aria**, our embedded project scoping assistant. It tailors recommendations in under 2 minutes.
+            </p>
+          </div>
+          <button
+            onClick={handleOpenChat}
+            className="btn-primary text-xs uppercase font-bold tracking-wider px-8 py-3.5 whitespace-nowrap shadow-md"
+          >
+            Launch Assistant
+          </button>
+        </div>
+
       </div>
     </section>
   )

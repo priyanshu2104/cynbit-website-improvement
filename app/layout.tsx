@@ -5,12 +5,17 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Cynbit Technologies — AI-Powered Project Inquiry',
+  title: 'Cynbit Technologies | AI Automation & Software Solutions Jaipur',
   description:
-    'Start your project with Cynbit. Our intelligent assistant will guide you to the right solution in seconds.',
+    'Cynbit Technologies architects the digital future with autonomous AI agents, custom software development, and scalable business platforms. Based in Jaipur, Rajasthan.',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   openGraph: {
-    title: 'Cynbit Technologies',
-    description: 'AI Automation · Full-Stack Dev · Cloud Architecture',
+    title: 'Cynbit Technologies | AI Automation & Software Solutions',
+    description: 'Autonomous AI Agents · Enterprise Cloud Systems · Scalable Software',
     url: 'https://cynbit.in',
     siteName: 'Cynbit Technologies',
     locale: 'en_US',
@@ -25,10 +30,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-cynbit-darker text-white antialiased`}>
+      <body className={`${inter.className} bg-surface text-on-surface antialiased min-h-screen flex flex-col`}>
         {children}
       </body>
     </html>
   )
 }
-

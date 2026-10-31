@@ -122,3 +122,4 @@ If rolled out into full production on `cynbit.in`, the recommended roadmap would
 1. **Persistent Database:** Connect the `/api/leads` route to PostgreSQL / Supabase or Cloud Firestore.
 2. **CRM Webhook:** Pipe new leads directly into Cynbit's internal CRM (e.g. Slack notifications + HubSpot/Zoho).
 3. **LLM Integration:** Optionally connect the widget to an LLM endpoint (Gemini or Claude API) so the assistant can answer dynamic questions about Cynbit's past case studies and pricing before concluding the lead capture.
+
