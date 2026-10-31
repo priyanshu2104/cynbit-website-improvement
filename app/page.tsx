@@ -6,6 +6,7 @@ import HeroSection from '@/components/HeroSection'
 import TickerSection from '@/components/TickerSection'
 import PillarsSection from '@/components/PillarsSection'
 import ServicesSection from '@/components/ServicesSection'
+import ProjectEstimatorSection from '@/components/ProjectEstimatorSection'
 import Footer from '@/components/Footer'
 import BottomNav from '@/components/BottomNav'
 import LeadInspectorDrawer from '@/components/LeadInspectorDrawer'
@@ -23,6 +24,7 @@ export default function Home() {
         <TickerSection />
         <PillarsSection />
         <ServicesSection />
+        <ProjectEstimatorSection />
       </main>
       <Footer />
       <BottomNav />

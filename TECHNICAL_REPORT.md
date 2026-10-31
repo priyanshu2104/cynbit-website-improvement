@@ -37,14 +37,17 @@ To address these pain points, I designed and developed a comprehensive solution 
    - Cynbit's vector logo (`/logo.svg`) and favicon (`/favicon.svg`).
    - Top glassmorphic navigation (`glass-nav`), orbital AI graphic with animated dashed rings, Foundational Pillars, Domain Mastery, Footer, and Mobile Bottom Navigation Bar.
 
-3. **Live Reviewer Console (Lead Inspector Drawer):**  
+3. **Interactive Project Architecture & Cost Estimator:**  
+   To resolve pricing and scoping opacity before prospective clients even open a contact form, I built an interactive self-service estimator directly onto the landing page. Users customize their project type, operational user volume, and architectural add-ons (such as Vector RAG or RBAC). The engine calculates sprint durations, budget projections, and dynamically synthesizes a tailored technology stack blueprint.
+
+4. **Live Reviewer Console (Lead Inspector Drawer):**  
    To allow evaluators to immediately verify the full-stack data pipeline, I added a slide-over **Reviewer Lead Console** triggered from the bottom-left corner. It connects to the `GET /api/leads` endpoint in real-time, displaying stored records with timestamps, UUIDs, categorized service pills, and budgets.
 
-4. **Inquiry Reference ID & Clipboard Copy:**  
+5. **Inquiry Reference ID & Clipboard Copy:**  
    Upon successful submission, the system generates a unique enterprise reference code (e.g. `#CYN-849201`) with a one-click copy button, giving users tangible proof of receipt.
 
-5. **Contextual Service Deep-Linking:**  
-   Clicking *"Discuss Requirements →"* on any service or pillar card automatically triggers the assistant with the corresponding service context.
+6. **Contextual Service Deep-Linking:**  
+   Clicking *"Discuss Requirements →"* or *"Start Project With This Scope"* automatically triggers the assistant with the corresponding service and scope context.
 
 ---
 

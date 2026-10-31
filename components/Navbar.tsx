@@ -56,8 +56,13 @@ export default function Navbar() {
               Services
             </Link>
 
-            <Link href="#products" className="px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-on-surface-variant hover:text-primary transition-colors">
-              Products
+            <Link href="#estimator" className="px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-primary hover:underline transition-colors flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+              Estimator
+            </Link>
+
+            <Link href="#pillars" className="px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-on-surface-variant hover:text-primary transition-colors">
+              Pillars
             </Link>
 
             <Link href="https://cynbit.in/bitelevate" target="_blank" className="px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-on-surface-variant hover:text-primary transition-colors">

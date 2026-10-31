@@ -34,10 +34,15 @@ To solve this, I built **Aria**, an interactive conversational project inquiry a
 - **Instant Synchronization:** Connects directly to the `GET /api/leads` endpoint and auto-refreshes via custom events whenever an inquiry is submitted in the chatbot.
 - **Evaluator-Friendly:** Allows reviewers to test submitting an inquiry in the chat and instantly inspect the stored record with timestamp, UUID, and categorization.
 
-### 3. Service Card Deep-Linking
+### 3. Interactive Project Architecture & Cost Estimator
+- **Self-Service Scoping Calculator:** An interactive on-page simulator allowing prospective clients to toggle solution type (*Autonomous AI Agents, Custom Web & Mobile, Cloud & DevOps, AI SaaS Suite*), user volume scale (*MVP, Growth, Enterprise*), and specialized architectural add-ons (*RBAC, Vector Search / RAG, Payment Engine, SEO Audit*).
+- **Dynamic Projections:** Instantly computes sprint durations (e.g. `~4 Weeks`), budget brackets (e.g. `₹2.5L – 3.2L`), and a tailor-made tech stack blueprint.
+- **1-Click Hand-off:** Includes a *"Start Project With This Scope"* trigger that feeds the calculated scope directly into the Aria assistant.
+
+### 4. Service Card Deep-Linking
 - On the **Domain Mastery** and **Foundational Pillars** sections, clicking *"Discuss Requirements →"* opens the assistant and dynamically passes relevant service context.
 
-### 4. Official Cynbit Design Language
+### 5. Official Cynbit Design Language
 - Faithfully mirrors Cynbit's Material 3 design system:
   - Colors: Primary Cynbit Teal (`#006067`), Primary Container (`#007b83`), Light Surface (`#f7fafa`), and Amber accents (`#ffddb3`).
   - Assets: Official vector `logo.svg` and `favicon.svg`.
@@ -72,6 +77,7 @@ cynbit-chatbot/
 │   ├── TickerSection.tsx           # Quick service highlights bar
 │   ├── PillarsSection.tsx          # Foundational pillars (Infrastructure, SaaS, Impact)
 │   ├── ServicesSection.tsx         # Domain mastery cards with scoping triggers
+│   ├── ProjectEstimatorSection.tsx # Interactive Scope & Architecture Calculator
 │   ├── Footer.tsx                  # Official footer with Jaipur office info & contact
 │   ├── BottomNav.tsx               # Mobile persistent bottom navigation bar
 │   ├── LeadInspectorDrawer.tsx     # Reviewer slide-over console for live API records

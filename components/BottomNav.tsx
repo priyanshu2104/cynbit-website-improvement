@@ -20,9 +20,9 @@ export default function BottomNav() {
         <span>Services</span>
       </Link>
 
-      <Link href="#pillars" className="flex flex-col items-center gap-1 text-[10px] font-bold text-on-surface-variant hover:text-primary">
+      <Link href="#estimator" className="flex flex-col items-center gap-1 text-[10px] font-bold text-on-surface-variant hover:text-primary">
         <Sparkles size={18} />
-        <span>Products</span>
+        <span>Estimator</span>
       </Link>
 
       <Link href="https://cynbit.in/bitelevate" target="_blank" className="flex flex-col items-center gap-1 text-[10px] font-bold text-on-surface-variant hover:text-primary">
